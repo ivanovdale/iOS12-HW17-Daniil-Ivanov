@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00296A002BA2EE74001D12FA /* BruteForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002969FF2BA2EE74001D12FA /* BruteForce.swift */; };
+		00296A032BA2EF0D001D12FA /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00296A022BA2EF0D001D12FA /* String+Ext.swift */; };
 		264DFEDE260D07EF0035EA15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264DFEDD260D07EF0035EA15 /* AppDelegate.swift */; };
 		264DFEE0260D07EF0035EA15 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264DFEDF260D07EF0035EA15 /* SceneDelegate.swift */; };
 		264DFEE2260D07EF0035EA15 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264DFEE1260D07EF0035EA15 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		002969FF2BA2EE74001D12FA /* BruteForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForce.swift; sourceTree = "<group>"; };
+		00296A022BA2EF0D001D12FA /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		264DFEDA260D07EF0035EA15 /* Pr2503.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pr2503.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		264DFEDD260D07EF0035EA15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		264DFEDF260D07EF0035EA15 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,8 +44,10 @@
 		002969FA2BA2DC95001D12FA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				00296A012BA2EEF8001D12FA /* Extensions */,
 				002969FE2BA2DCEF001D12FA /* App */,
 				264DFEE1260D07EF0035EA15 /* ViewController.swift */,
+				002969FF2BA2EE74001D12FA /* BruteForce.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -80,6 +86,14 @@
 				264DFEDF260D07EF0035EA15 /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		00296A012BA2EEF8001D12FA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				00296A022BA2EF0D001D12FA /* String+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		264DFED1260D07EF0035EA15 = {
@@ -177,8 +191,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00296A002BA2EE74001D12FA /* BruteForce.swift in Sources */,
 				264DFEE2260D07EF0035EA15 /* ViewController.swift in Sources */,
 				264DFEDE260D07EF0035EA15 /* AppDelegate.swift in Sources */,
+				00296A032BA2EF0D001D12FA /* String+Ext.swift in Sources */,
 				264DFEE0260D07EF0035EA15 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
