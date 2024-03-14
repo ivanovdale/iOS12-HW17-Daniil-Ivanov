@@ -16,21 +16,51 @@ final class BruteForce {
         attributes: .concurrent
     )
 
+    static private var bruteForcedPasswordParts: [Int: String] = [:]
+
+    static var passwordReader: String {
+        var result = ""
+        queue.sync {
+            let count = bruteForcedPasswordParts.count
+            for index in 0..<count {
+                let value = bruteForcedPasswordParts[index]
+                if let value {
+                    result.append(value)
+                }
+            }
+        }
+        return result
+    }
+
+    static func writePassword(newValue: String, at index: Int) {
+        queue.async(flags: .barrier) {
+            self.bruteForcedPasswordParts[index] = newValue
+        }
+    }
+
     static func execute(passwordToUnlock: String, completionHandler: @escaping StringClosure) {
         let ALLOWED_CHARACTERS: [String] = String().printable.map { String($0) }
 
-        var password: String = ""
+        let splittedPassword = passwordToUnlock.split(every: 2)
+        let numberOfIterations = splittedPassword.count
 
         let workItem = DispatchWorkItem {
             print("Start bruteforcing...")
-            while password != passwordToUnlock {
-                password = generateBruteForce(password, fromArray: ALLOWED_CHARACTERS)
+            DispatchQueue.concurrentPerform(iterations: numberOfIterations) { index in
+                var password = ""
+                let passwordToUnlock = splittedPassword[index]
+                while password != passwordToUnlock {
+                    password = generateBruteForce(password, fromArray: ALLOWED_CHARACTERS)
+                }
+                print("End bruteforcing... \(index) Password part: \(password) on  \(Thread.current)")
+
+                writePassword(newValue: password, at: index)
             }
         }
 
         workItem.notify(queue: queue) {
-            print("Password found: \(password)")
-            completionHandler(password)
+            print("Password found: \(passwordReader)")
+            completionHandler(passwordReader)
         }
 
         queue.async(execute: workItem)

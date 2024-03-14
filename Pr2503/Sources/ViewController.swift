@@ -65,5 +65,5 @@ final class ViewController: UIViewController {
 // MARK: - Constants
 
 fileprivate enum Constants {
-    static let passwordLength = 3
+    static let passwordLength = 40
 }
