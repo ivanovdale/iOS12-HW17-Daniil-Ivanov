@@ -7,18 +7,33 @@
 
 import Foundation
 
+typealias StringClosure = (String) -> ()
+
 final class BruteForce {
-    static func execute(passwordToUnlock: String) {
+    static private let queue = DispatchQueue(
+        label: "BruteForceQueue",
+        qos: .userInteractive,
+        attributes: .concurrent
+    )
+
+    static func execute(passwordToUnlock: String, completionHandler: @escaping StringClosure) {
         let ALLOWED_CHARACTERS: [String] = String().printable.map { String($0) }
 
         var password: String = ""
 
-        while password != passwordToUnlock {
-            password = generateBruteForce(password, fromArray: ALLOWED_CHARACTERS)
-            print(password)
+        let workItem = DispatchWorkItem {
+            print("Start bruteforcing...")
+            while password != passwordToUnlock {
+                password = generateBruteForce(password, fromArray: ALLOWED_CHARACTERS)
+            }
         }
 
-        print(password)
+        workItem.notify(queue: queue) {
+            print("Password found: \(password)")
+            completionHandler(password)
+        }
+
+        queue.async(execute: workItem)
     }
 
     private static func indexOf(character: Character, _ array: [String]) -> Int {

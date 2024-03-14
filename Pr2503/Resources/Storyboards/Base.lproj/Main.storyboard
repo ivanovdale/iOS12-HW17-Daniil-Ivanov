@@ -25,7 +25,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S30-xe-CEC" userLabel="PasswordTextField">
-                                <rect key="frame" x="20" y="431" width="374" height="34"/>
+                                <rect key="frame" x="20" y="431" width="344" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
@@ -43,11 +43,17 @@
                                     <action selector="onGeneratePasswordTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KIR-VM-hdG"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="XGK-19-0ZD">
+                                <rect key="frame" x="374" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="S30-xe-CEC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="80c-xH-2Ve"/>
+                            <constraint firstItem="XGK-19-0ZD" firstAttribute="leading" secondItem="S30-xe-CEC" secondAttribute="trailing" constant="10" id="9Ja-ve-bTI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XGK-19-0ZD" secondAttribute="trailing" constant="20" id="OD5-V1-Vtc"/>
+                            <constraint firstItem="XGK-19-0ZD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="RdE-oT-szf"/>
                             <constraint firstItem="FgT-wg-9dr" firstAttribute="top" secondItem="S30-xe-CEC" secondAttribute="bottom" constant="20" id="TQE-oo-4Ci"/>
                             <constraint firstItem="FgT-wg-9dr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zio-qv-eNf"/>
                             <constraint firstItem="3g4-cd-RKK" firstAttribute="top" secondItem="FgT-wg-9dr" secondAttribute="bottom" constant="30" id="dva-fm-rjE"/>
@@ -55,10 +61,10 @@
                             <constraint firstItem="3g4-cd-RKK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lZB-aZ-G44"/>
                             <constraint firstItem="S30-xe-CEC" firstAttribute="top" secondItem="04F-Xt-5g1" secondAttribute="bottom" constant="40" id="sW1-8J-zVP"/>
                             <constraint firstItem="04F-Xt-5g1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ueL-eX-hDf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S30-xe-CEC" secondAttribute="trailing" constant="20" id="xr7-1O-DLg"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="XGK-19-0ZD" id="JQg-3d-F6T"/>
                         <outlet property="changeBackgroundButton" destination="3g4-cd-RKK" id="ci4-EH-75n"/>
                         <outlet property="generatePasswordButton" destination="FgT-wg-9dr" id="5cP-cH-Ck9"/>
                         <outlet property="passwordLabel" destination="04F-Xt-5g1" id="fTu-70-HA1"/>

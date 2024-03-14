@@ -12,6 +12,8 @@ final class ViewController: UIViewController {
     
     @IBOutlet weak var passwordLabel: UILabel!
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     // MARK: - Data
 
     var isBlack: Bool = false {
@@ -21,6 +23,12 @@ final class ViewController: UIViewController {
             } else {
                 self.view.backgroundColor = .white
             }
+        }
+    }
+
+    var password: String? {
+        didSet {
+            passwordLabel.text = password
         }
     }
 
@@ -37,6 +45,25 @@ final class ViewController: UIViewController {
     }
 
     @IBAction func onGeneratePasswordTapped(_ sender: UIButton) {
+        password = PasswordManager.generateRandomPassword(length: Constants.passwordLength)
 
+        activityIndicator.startAnimating()
+        if let password {
+            BruteForce.execute(passwordToUnlock: password) { bruteforcedPassword in
+                DispatchQueue.main.sync {
+                    self.passwordTextField.text = bruteforcedPassword
+                    self.passwordTextField.isSecureTextEntry = false
+                    self.activityIndicator.stopAnimating()
+                }
+            }
+        }
     }
+
+
+}
+
+// MARK: - Constants
+
+fileprivate enum Constants {
+    static let passwordLength = 3
 }
