@@ -1,8 +1,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var button: UIButton!
+
+    // MARK: - Outlets
+
+    @IBOutlet weak var changeBackgroundButton: UIButton!
+
+    @IBOutlet weak var generatePasswordButton: UIButton!
     
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var passwordLabel: UILabel!
+
+    // MARK: - Data
+
     var isBlack: Bool = false {
         didSet {
             if isBlack {
@@ -12,11 +23,9 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    @IBAction func onBut(_ sender: Any) {
-        isBlack.toggle()
-    }
-    
+
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +33,15 @@ class ViewController: UIViewController {
         self.bruteForce(passwordToUnlock: "1!gr")
         
         // Do any additional setup after loading the view.
+    }
+
+    // MARK: - Actions
+
+    @IBAction func onChangeBackgroundTapped(_ sender: UIButton) {
+        isBlack.toggle()
+    }
+
+    @IBAction func onGeneratePasswordTapped(_ sender: UIButton) {
     }
     
     func bruteForce(passwordToUnlock: String) {
