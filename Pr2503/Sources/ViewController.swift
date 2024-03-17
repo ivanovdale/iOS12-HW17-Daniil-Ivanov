@@ -22,9 +22,14 @@ final class ViewController: UIViewController {
         }
     }
 
-    var password: String? {
+    var password: String?
+
+    var isCrackingPasswordInProgress = false {
         didSet {
-            passwordLabel.text = password
+            setButtonTitle()
+            setButtonColor()
+            setLabelText()
+            setActivityIndicator()
         }
     }
 
@@ -76,6 +81,40 @@ final class ViewController: UIViewController {
             view.backgroundColor = .black
         } else {
             view.backgroundColor = .white
+        }
+    }
+
+    private func setButtonTitle() {
+        let buttonTitle: String
+        if isCrackingPasswordInProgress {
+            buttonTitle = "Stop cracking"
+        } else {
+            buttonTitle = "Crack password"
+        }
+        generatePasswordButton.setTitle(buttonTitle, for: .normal)
+    }
+
+    private func setButtonColor() {
+        let buttonColor: UIColor
+        if isCrackingPasswordInProgress {
+            buttonColor = .red
+        } else {
+            buttonColor = .systemBlue
+        }
+        generatePasswordButton.tintColor = buttonColor
+    }
+
+    private func setLabelText() {
+        if isCrackingPasswordInProgress {
+            passwordLabel.text = "Cracking started..."
+        }
+    }
+
+    private func setActivityIndicator() {
+        if isCrackingPasswordInProgress {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
         }
     }
                     self.passwordTextField.isSecureTextEntry = false
