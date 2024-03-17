@@ -60,6 +60,10 @@ final class ViewController: UIViewController {
 
     @IBAction func onGeneratePasswordTapped(_ sender: UIButton) {
         password = PasswordManager.generateRandomPassword(length: Constants.passwordLength)
+    @objc
+    private func viewTapped() {
+        view.endEditing(true)
+    }
     @objc func textFieldDidChange(textField: UITextField) {
         password = textField.text
     }
