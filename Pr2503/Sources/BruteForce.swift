@@ -29,34 +29,55 @@ final class BruteForce {
         passwordToUnlock: String,
         completionHandler: @escaping StringClosure
     ) {
+        setupWorkItem(passwordToUnlock: passwordToUnlock)
+
+        workItem?.notify(queue: bruteForceQueue) {
+            guard !(self.workItem?.isCancelled ?? true) else { return }
+
+            let password = self.passwordStorage.passwordReader
+            print("Password found: \(password)")
+            completionHandler(password)
+        }
+
+        if let workItem {
+            bruteForceQueue.async(execute: workItem)
         }
     }
 
-        let ALLOWED_CHARACTERS: [String] = String().printable.map { String($0) }
+    private func setupWorkItem(passwordToUnlock: String) {
+        let allowedCharacters: [String] = String().printable.map { String($0) }
 
         let splittedPassword = passwordToUnlock.split(every: 2)
-        let numberOfIterations = splittedPassword.count
+        let iterations = splittedPassword.count
 
-        let workItem = DispatchWorkItem {
+        workItem = DispatchWorkItem {
             print("Start bruteforcing...")
-            DispatchQueue.concurrentPerform(iterations: numberOfIterations) { index in
-                var password = ""
-                let passwordToUnlock = splittedPassword[index]
-                while password != passwordToUnlock {
-                    password = generateBruteForce(password, fromArray: ALLOWED_CHARACTERS)
-                }
-                print("End bruteforcing... \(index) Password part: \(password) on  \(Thread.current)")
-
-                writePassword(newValue: password, at: index)
+            DispatchQueue.concurrentPerform(iterations: iterations) { iteration in
+                self.performBruteForce(
+                    allowedCharacters: allowedCharacters,
+                    splittedPassword: splittedPassword,
+                    iteration: iteration
+                )
             }
         }
+    }
 
-        workItem.notify(queue: queue) {
-            print("Password found: \(passwordReader)")
-            completionHandler(passwordReader)
+    private func performBruteForce(
+        allowedCharacters: [String],
+        splittedPassword: [String],
+        iteration: Int
+    ) {
+        var password = ""
+        let passwordToUnlock = splittedPassword[iteration]
+        while password != passwordToUnlock {
+            password = self.generateBruteForce(password, fromArray: allowedCharacters)
+            
+            usleep(2000)
         }
 
-        queue.async(execute: workItem)
+        print("End bruteforcing... \(iteration) Password part: \(password) on  \(Thread.current)")
+
+        self.passwordStorage.writePassword(newValue: password, at: iteration)
     }
 
     private func indexOf(character: Character, _ array: [String]) -> Int {
