@@ -18,11 +18,7 @@ final class ViewController: UIViewController {
 
     var isBlack: Bool = false {
         didSet {
-            if isBlack {
-                self.view.backgroundColor = .black
-            } else {
-                self.view.backgroundColor = .white
-            }
+            setBackgroundColor()
         }
     }
 
@@ -73,6 +69,15 @@ final class ViewController: UIViewController {
             BruteForce.execute(passwordToUnlock: password) { bruteforcedPassword in
                 DispatchQueue.main.sync {
                     self.passwordTextField.text = bruteforcedPassword
+    // MARK: - Update UI
+
+    private func setBackgroundColor() {
+        if isBlack {
+            view.backgroundColor = .black
+        } else {
+            view.backgroundColor = .white
+        }
+    }
                     self.passwordTextField.isSecureTextEntry = false
                     self.activityIndicator.stopAnimating()
                 }
