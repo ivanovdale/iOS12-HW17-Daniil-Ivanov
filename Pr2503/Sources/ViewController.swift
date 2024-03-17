@@ -16,6 +16,10 @@ final class ViewController: UIViewController {
     
     // MARK: - Data
 
+    var bruteForce: BruteForce?
+
+    var passwordManager: PasswordManager?
+
     var isBlack: Bool = false {
         didSet {
             setBackgroundColor()
@@ -55,25 +59,27 @@ final class ViewController: UIViewController {
 
     // MARK: - Actions
 
-    @IBAction func onChangeBackgroundTapped(_ sender: UIButton) {
+    @IBAction private func onChangeBackgroundTapped(_ sender: UIButton) {
         isBlack.toggle()
     }
 
-    @IBAction func onGeneratePasswordTapped(_ sender: UIButton) {
-        password = PasswordManager.generateRandomPassword(length: Constants.passwordLength)
+    @IBAction private func onGeneratePasswordTapped(_ sender: UIButton) {
+        if isCrackingPasswordInProgress {
+            stopCracking()
+        } else {
+            crackPassword()
+        }
+    }
+
     @objc
     private func viewTapped() {
         view.endEditing(true)
     }
+
     @objc func textFieldDidChange(textField: UITextField) {
         password = textField.text
     }
 
-        activityIndicator.startAnimating()
-        if let password {
-            BruteForce.execute(passwordToUnlock: password) { bruteforcedPassword in
-                DispatchQueue.main.sync {
-                    self.passwordTextField.text = bruteforcedPassword
     // MARK: - Update UI
 
     private func setBackgroundColor() {
@@ -117,14 +123,54 @@ final class ViewController: UIViewController {
             activityIndicator.stopAnimating()
         }
     }
-                    self.passwordTextField.isSecureTextEntry = false
-                    self.activityIndicator.stopAnimating()
-                }
-            }
+
+    // MARK: - Update data
+
+    private func crackPassword() {
+        if let _ = password {
+            view.endEditing(true)
+            isCrackingPasswordInProgress = true
+            startBruteForcing()
+            startRandomPasswordGeneration()
         }
     }
 
+    private func startBruteForcing() {
+        guard let password else { return }
+        bruteForce = BruteForce()
+        bruteForce?.execute(
+            passwordToUnlock: password,
+            completionHandler: { bruteforcedPassword in
+                DispatchQueue.main.async {
+                    self.passwordLabel.text = "Cracked password \"\(bruteforcedPassword)\""
+                    self.isCrackingPasswordInProgress = false
+                    self.passwordTextField.isSecureTextEntry = false
+                    self.bruteForce = nil
+                }
+                self.passwordManager?.stopRandomPasswordSelection()
+            }
+        )
+    }
 
+    private func startRandomPasswordGeneration() {
+        guard let password else { return }
+        passwordManager = PasswordManager()
+        passwordManager?.startRandomPasswordSelection(
+            passwordToUnlock: password,
+            inProccessHandler: { possiblePassword in
+                DispatchQueue.main.async {
+                    self.passwordLabel.text = "Possible password \"\(possiblePassword)\""
+                }
+            }
+        )
+    }
+
+    private func stopCracking() {
+        bruteForce?.stop()
+        passwordManager?.stopRandomPasswordSelection()
+        passwordLabel.text = "Password \"\(password ?? "")\" has not been cracked"
+        isCrackingPasswordInProgress = false
+    }
 }
 
 // MARK: - Extensions
