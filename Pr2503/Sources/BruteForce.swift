@@ -10,31 +10,21 @@ import Foundation
 typealias StringClosure = (String) -> ()
 
 final class BruteForce {
-    static private let queue = DispatchQueue(
+    private let bruteForceQueue = DispatchQueue(
         label: "BruteForceQueue",
         qos: .userInteractive,
         attributes: .concurrent
     )
 
-    static private var bruteForcedPasswordParts: [Int: String] = [:]
+    private let passwordStorage: PasswordSafeStorage
 
-    static var passwordReader: String {
-        var result = ""
-        queue.sync {
-            let count = bruteForcedPasswordParts.count
-            for index in 0..<count {
-                let value = bruteForcedPasswordParts[index]
-                if let value {
-                    result.append(value)
-                }
-            }
-        }
-        return result
+
+    private var workItem: DispatchWorkItem?
+
+    init() {
+        self.passwordStorage = PasswordSafeStorage(queue: bruteForceQueue)
     }
 
-    static func writePassword(newValue: String, at index: Int) {
-        queue.async(flags: .barrier) {
-            self.bruteForcedPasswordParts[index] = newValue
         }
     }
 
