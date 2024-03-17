@@ -44,6 +44,10 @@ final class BruteForce {
         }
     }
 
+    func stop() {
+        workItem?.cancel()
+    }
+
     private func setupWorkItem(passwordToUnlock: String) {
         let allowedCharacters: [String] = String().printable.map { String($0) }
 
