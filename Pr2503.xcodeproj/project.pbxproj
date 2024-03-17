@@ -10,6 +10,7 @@
 		00296A002BA2EE74001D12FA /* BruteForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002969FF2BA2EE74001D12FA /* BruteForce.swift */; };
 		00296A032BA2EF0D001D12FA /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00296A022BA2EF0D001D12FA /* String+Ext.swift */; };
 		00296A052BA2EF44001D12FA /* PasswordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00296A042BA2EF44001D12FA /* PasswordManager.swift */; };
+		004850392BA4442400644DC9 /* PasswordSafeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004850382BA4442400644DC9 /* PasswordSafeStorage.swift */; };
 		264DFEDE260D07EF0035EA15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264DFEDD260D07EF0035EA15 /* AppDelegate.swift */; };
 		264DFEE0260D07EF0035EA15 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264DFEDF260D07EF0035EA15 /* SceneDelegate.swift */; };
 		264DFEE2260D07EF0035EA15 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264DFEE1260D07EF0035EA15 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 		002969FF2BA2EE74001D12FA /* BruteForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForce.swift; sourceTree = "<group>"; };
 		00296A022BA2EF0D001D12FA /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		00296A042BA2EF44001D12FA /* PasswordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManager.swift; sourceTree = "<group>"; };
+		004850382BA4442400644DC9 /* PasswordSafeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSafeStorage.swift; sourceTree = "<group>"; };
 		264DFEDA260D07EF0035EA15 /* Pr2503.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pr2503.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		264DFEDD260D07EF0035EA15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		264DFEDF260D07EF0035EA15 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 				264DFEE1260D07EF0035EA15 /* ViewController.swift */,
 				002969FF2BA2EE74001D12FA /* BruteForce.swift */,
 				00296A042BA2EF44001D12FA /* PasswordManager.swift */,
+				004850382BA4442400644DC9 /* PasswordSafeStorage.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				00296A052BA2EF44001D12FA /* PasswordManager.swift in Sources */,
 				00296A002BA2EE74001D12FA /* BruteForce.swift in Sources */,
 				264DFEE2260D07EF0035EA15 /* ViewController.swift in Sources */,
+				004850392BA4442400644DC9 /* PasswordSafeStorage.swift in Sources */,
 				264DFEDE260D07EF0035EA15 /* AppDelegate.swift in Sources */,
 				00296A032BA2EF0D001D12FA /* String+Ext.swift in Sources */,
 				264DFEE0260D07EF0035EA15 /* SceneDelegate.swift in Sources */,

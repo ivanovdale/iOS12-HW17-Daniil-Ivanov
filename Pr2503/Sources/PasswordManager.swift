@@ -8,11 +8,31 @@
 import Foundation
 
 final class PasswordManager {
-    static func generateRandomPassword(length: Int) -> String {
+    private var possiblePasswordTimer: Timer?
+
+    static func generateRandomPassword(length: Int, logPrint: Bool = false) -> String {
         let passwordCharacters = String().printable
         let randomPassword = String((0..<length).compactMap{ _ in passwordCharacters.randomElement() })
-        print("Generated password: \(randomPassword)")
+        if logPrint {
+            print("Generated password: \(randomPassword)")
+        }
 
         return randomPassword
+    }
+
+    func startRandomPasswordSelection(passwordToUnlock: String, inProccessHandler: @escaping StringClosure) {
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { timer in
+            let randomPassword = PasswordManager.generateRandomPassword(length: passwordToUnlock.count)
+            inProccessHandler(randomPassword)
+        })
+        self.possiblePasswordTimer = timer
+
+        RunLoop.current.add(timer, forMode: .common)
+        RunLoop.current.run()
+    }
+
+    func stopRandomPasswordSelection() {
+        possiblePasswordTimer?.invalidate()
+        possiblePasswordTimer = nil
     }
 }
