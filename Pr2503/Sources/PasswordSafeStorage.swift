@@ -14,9 +14,7 @@ final class PasswordSafeStorage {
 
     var passwordReader: String {
         var result = ""
-        print("Start reading...")
         queue.sync {
-            print("Reading...")
             let count = passwordParts.count
             for index in 0..<count {
                 let value = passwordParts[index]
@@ -47,7 +45,6 @@ final class PasswordSafeStorage {
     func writePassword(newValue: String, at index: Int) {
         queue.async(flags: .barrier) {
             self.passwordParts[index] = newValue
-            print("Writing...")
         }
     }
 }
