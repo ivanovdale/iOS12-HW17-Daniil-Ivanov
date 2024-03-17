@@ -36,6 +36,20 @@ final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupOutlets()
+        setupView()
+    }
+
+    // MARK: - Setup
+
+    private func setupOutlets() {
+        passwordTextField.delegate = self
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+
+    private func setupView() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        view.addGestureRecognizer(gesture)
     }
 
     // MARK: - Actions
@@ -46,6 +60,9 @@ final class ViewController: UIViewController {
 
     @IBAction func onGeneratePasswordTapped(_ sender: UIButton) {
         password = PasswordManager.generateRandomPassword(length: Constants.passwordLength)
+    @objc func textFieldDidChange(textField: UITextField) {
+        password = textField.text
+    }
 
         activityIndicator.startAnimating()
         if let password {
