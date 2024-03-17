@@ -25,10 +25,13 @@ final class BruteForce {
         self.passwordStorage = PasswordSafeStorage(queue: bruteForceQueue)
     }
 
+    func execute(
+        passwordToUnlock: String,
+        completionHandler: @escaping StringClosure
+    ) {
         }
     }
 
-    static func execute(passwordToUnlock: String, completionHandler: @escaping StringClosure) {
         let ALLOWED_CHARACTERS: [String] = String().printable.map { String($0) }
 
         let splittedPassword = passwordToUnlock.split(every: 2)
@@ -56,16 +59,16 @@ final class BruteForce {
         queue.async(execute: workItem)
     }
 
-    private static func indexOf(character: Character, _ array: [String]) -> Int {
+    private func indexOf(character: Character, _ array: [String]) -> Int {
         return array.firstIndex(of: String(character))!
     }
 
-    private static func characterAt(index: Int, _ array: [String]) -> Character {
+    private func characterAt(index: Int, _ array: [String]) -> Character {
         return index < array.count ? Character(array[index])
                                    : Character("")
     }
 
-    private static func generateBruteForce(_ string: String, fromArray array: [String]) -> String {
+    private func generateBruteForce(_ string: String, fromArray array: [String]) -> String {
         var str: String = string
 
         if str.count <= 0 {
