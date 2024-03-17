@@ -127,8 +127,18 @@ final class ViewController: UIViewController {
 
 }
 
-// MARK: - Constants
+// MARK: - Extensions
 
-fileprivate enum Constants {
-    static let passwordLength = 40
+// MARK: - UITextFieldDelegate
+
+extension ViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet(charactersIn: String().printable)
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.isSecureTextEntry = true
+    }
 }
