@@ -53,8 +53,7 @@ final class ViewController: UIViewController {
     }
 
     private func setupView() {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
-        view.addGestureRecognizer(gesture)
+        view.configureTapGestureForEndEditing()
     }
 
     // MARK: - Actions
@@ -69,11 +68,6 @@ final class ViewController: UIViewController {
         } else {
             crackPassword()
         }
-    }
-
-    @objc
-    private func viewTapped() {
-        view.endEditing(true)
     }
 
     @objc func textFieldDidChange(textField: UITextField) {
