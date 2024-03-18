@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00296A002BA2EE74001D12FA /* BruteForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002969FF2BA2EE74001D12FA /* BruteForce.swift */; };
+		00296A032BA2EF0D001D12FA /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00296A022BA2EF0D001D12FA /* String+Ext.swift */; };
+		00296A052BA2EF44001D12FA /* PasswordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00296A042BA2EF44001D12FA /* PasswordManager.swift */; };
+		004411962BA8B9310081CB6A /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004411952BA8B9310081CB6A /* UIView+Ext.swift */; };
+		004850392BA4442400644DC9 /* PasswordSafeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004850382BA4442400644DC9 /* PasswordSafeStorage.swift */; };
 		264DFEDE260D07EF0035EA15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264DFEDD260D07EF0035EA15 /* AppDelegate.swift */; };
 		264DFEE0260D07EF0035EA15 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264DFEDF260D07EF0035EA15 /* SceneDelegate.swift */; };
 		264DFEE2260D07EF0035EA15 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264DFEE1260D07EF0035EA15 /* ViewController.swift */; };
@@ -16,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		002969FF2BA2EE74001D12FA /* BruteForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForce.swift; sourceTree = "<group>"; };
+		00296A022BA2EF0D001D12FA /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		00296A042BA2EF44001D12FA /* PasswordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManager.swift; sourceTree = "<group>"; };
+		004411952BA8B9310081CB6A /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		004850382BA4442400644DC9 /* PasswordSafeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSafeStorage.swift; sourceTree = "<group>"; };
 		264DFEDA260D07EF0035EA15 /* Pr2503.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pr2503.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		264DFEDD260D07EF0035EA15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		264DFEDF260D07EF0035EA15 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +47,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		002969FA2BA2DC95001D12FA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				00296A012BA2EEF8001D12FA /* Extensions */,
+				002969FE2BA2DCEF001D12FA /* App */,
+				264DFEE1260D07EF0035EA15 /* ViewController.swift */,
+				002969FF2BA2EE74001D12FA /* BruteForce.swift */,
+				00296A042BA2EF44001D12FA /* PasswordManager.swift */,
+				004850382BA4442400644DC9 /* PasswordSafeStorage.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		002969FB2BA2DC9C001D12FA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				002969FD2BA2DCE1001D12FA /* Storyboards */,
+				264DFEE6260D07F00035EA15 /* Assets.xcassets */,
+				002969FC2BA2DCA9001D12FA /* Configuration */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		002969FC2BA2DCA9001D12FA /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				264DFEEB260D07F00035EA15 /* Info.plist */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		002969FD2BA2DCE1001D12FA /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				264DFEE3260D07EF0035EA15 /* Main.storyboard */,
+				264DFEE8260D07F00035EA15 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		002969FE2BA2DCEF001D12FA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				264DFEDD260D07EF0035EA15 /* AppDelegate.swift */,
+				264DFEDF260D07EF0035EA15 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		00296A012BA2EEF8001D12FA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				00296A022BA2EF0D001D12FA /* String+Ext.swift */,
+				004411952BA8B9310081CB6A /* UIView+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		264DFED1260D07EF0035EA15 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +124,8 @@
 		264DFEDC260D07EF0035EA15 /* Pr2503 */ = {
 			isa = PBXGroup;
 			children = (
-				264DFEDD260D07EF0035EA15 /* AppDelegate.swift */,
-				264DFEDF260D07EF0035EA15 /* SceneDelegate.swift */,
-				264DFEE1260D07EF0035EA15 /* ViewController.swift */,
-				264DFEE3260D07EF0035EA15 /* Main.storyboard */,
-				264DFEE6260D07F00035EA15 /* Assets.xcassets */,
-				264DFEE8260D07F00035EA15 /* LaunchScreen.storyboard */,
-				264DFEEB260D07F00035EA15 /* Info.plist */,
+				002969FA2BA2DC95001D12FA /* Sources */,
+				002969FB2BA2DC9C001D12FA /* Resources */,
 			);
 			path = Pr2503;
 			sourceTree = "<group>";
@@ -137,8 +200,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				004411962BA8B9310081CB6A /* UIView+Ext.swift in Sources */,
+				00296A052BA2EF44001D12FA /* PasswordManager.swift in Sources */,
+				00296A002BA2EE74001D12FA /* BruteForce.swift in Sources */,
 				264DFEE2260D07EF0035EA15 /* ViewController.swift in Sources */,
+				004850392BA4442400644DC9 /* PasswordSafeStorage.swift in Sources */,
 				264DFEDE260D07EF0035EA15 /* AppDelegate.swift in Sources */,
+				00296A032BA2EF0D001D12FA /* String+Ext.swift in Sources */,
 				264DFEE0260D07EF0035EA15 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,7 +284,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -271,7 +339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -288,15 +356,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CC9X6PH2C6;
-				INFOPLIST_FILE = Pr2503/Info.plist;
+				INFOPLIST_FILE = Pr2503/Resources/Configuration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mamba.Pr2503;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -307,15 +379,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CC9X6PH2C6;
-				INFOPLIST_FILE = Pr2503/Info.plist;
+				INFOPLIST_FILE = Pr2503/Resources/Configuration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mamba.Pr2503;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

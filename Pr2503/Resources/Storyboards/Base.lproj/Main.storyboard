@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Pr2503" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3g4-cd-RKK" userLabel="ChangeBackgroundButton">
+                                <rect key="frame" x="137.5" y="550" width="139" height="30"/>
+                                <state key="normal" title="Change background"/>
+                                <connections>
+                                    <action selector="onChangeBackgroundTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c2s-Qj-rj9"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S30-xe-CEC" userLabel="PasswordTextField">
+                                <rect key="frame" x="20" y="431" width="344" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04F-Xt-5g1" userLabel="PasswordLabel">
+                                <rect key="frame" x="207" y="391" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgT-wg-9dr" userLabel="GeneratePasswordButton">
+                                <rect key="frame" x="134" y="485" width="146.5" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Crack password"/>
+                                <connections>
+                                    <action selector="onGeneratePasswordTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KIR-VM-hdG"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="XGK-19-0ZD">
+                                <rect key="frame" x="374" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="S30-xe-CEC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="80c-xH-2Ve"/>
+                            <constraint firstItem="XGK-19-0ZD" firstAttribute="leading" secondItem="S30-xe-CEC" secondAttribute="trailing" constant="10" id="9Ja-ve-bTI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XGK-19-0ZD" secondAttribute="trailing" constant="20" id="OD5-V1-Vtc"/>
+                            <constraint firstItem="XGK-19-0ZD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="RdE-oT-szf"/>
+                            <constraint firstItem="FgT-wg-9dr" firstAttribute="top" secondItem="S30-xe-CEC" secondAttribute="bottom" constant="20" id="TQE-oo-4Ci"/>
+                            <constraint firstItem="FgT-wg-9dr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zio-qv-eNf"/>
+                            <constraint firstItem="3g4-cd-RKK" firstAttribute="top" secondItem="FgT-wg-9dr" secondAttribute="bottom" constant="30" id="dva-fm-rjE"/>
+                            <constraint firstItem="S30-xe-CEC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="lHb-pP-quF"/>
+                            <constraint firstItem="3g4-cd-RKK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lZB-aZ-G44"/>
+                            <constraint firstItem="S30-xe-CEC" firstAttribute="top" secondItem="04F-Xt-5g1" secondAttribute="bottom" constant="40" id="sW1-8J-zVP"/>
+                            <constraint firstItem="04F-Xt-5g1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ueL-eX-hDf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="XGK-19-0ZD" id="JQg-3d-F6T"/>
+                        <outlet property="changeBackgroundButton" destination="3g4-cd-RKK" id="ci4-EH-75n"/>
+                        <outlet property="generatePasswordButton" destination="FgT-wg-9dr" id="5cP-cH-Ck9"/>
+                        <outlet property="passwordLabel" destination="04F-Xt-5g1" id="fTu-70-HA1"/>
+                        <outlet property="passwordTextField" destination="S30-xe-CEC" id="g3t-vb-aFh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="97"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
