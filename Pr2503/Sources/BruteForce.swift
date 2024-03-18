@@ -15,10 +15,8 @@ final class BruteForce {
         qos: .userInteractive,
         attributes: .concurrent
     )
-
+    
     private let passwordStorage: PasswordSafeStorage
-
-
     private var workItem: DispatchWorkItem?
 
     init() {
