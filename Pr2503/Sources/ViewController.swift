@@ -4,16 +4,12 @@ final class ViewController: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var changeBackgroundButton: UIButton!
+    @IBOutlet private weak var changeBackgroundButton: UIButton!
+    @IBOutlet private weak var generatePasswordButton: UIButton!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var passwordLabel: UILabel!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
 
-    @IBOutlet weak var generatePasswordButton: UIButton!
-    
-    @IBOutlet weak var passwordTextField: UITextField!
-    
-    @IBOutlet weak var passwordLabel: UILabel!
-
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     // MARK: - Data
 
     var bruteForce: BruteForce?
@@ -53,8 +49,7 @@ final class ViewController: UIViewController {
     }
 
     private func setupView() {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
-        view.addGestureRecognizer(gesture)
+        view.configureTapGestureForEndEditing()
     }
 
     // MARK: - Actions
@@ -69,11 +64,6 @@ final class ViewController: UIViewController {
         } else {
             crackPassword()
         }
-    }
-
-    @objc
-    private func viewTapped() {
-        view.endEditing(true)
     }
 
     @objc func textFieldDidChange(textField: UITextField) {

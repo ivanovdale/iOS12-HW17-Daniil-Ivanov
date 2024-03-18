@@ -9,7 +9,6 @@ import Foundation
 
 final class PasswordSafeStorage {
     private let queue: DispatchQueue
-
     private var passwordParts: [Int: String] = [:]
 
     var passwordReader: String {
@@ -21,18 +20,6 @@ final class PasswordSafeStorage {
                 if let value {
                     result.append(value)
                 }
-            }
-        }
-        return result
-    }
-
-    var unsafePasswordReader: String? {
-        var result = ""
-        let count = passwordParts.count
-        for index in 0..<count {
-            let value = passwordParts[index]
-            if let value {
-                result.append(value)
             }
         }
         return result
